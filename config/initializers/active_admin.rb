@@ -2,7 +2,7 @@
 
 ActiveAdmin.setup do |config|
   require "devise"
-
+  config.authentication_method = :authenticate_admin!
   
   # == Site Title
   #

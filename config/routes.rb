@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   resources :sellers
-  devise_for :users
+
+
+  devise_for :users, controllers: {
+     registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
 
   ActiveAdmin.routes(self)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,5 +22,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "home#index"  # No need for "/"
-
 end

@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 ActiveAdmin.register_page "Dashboard" do
+  content title: "Dashboard" do
 
-  controller do
-    before_action :check_admin
-
-    def check_admin
-      unless current_user&.admin?
-        redirect_to root_path, alert: "You are not authorized to access this page."
+    panel "User Role Distribution" do
+      div do
+        pie_chart User.group(:role).count,
+                  colors: ["#3498db", "#e74c3c", "#f1c40f"], # Blue, Red, Yellow
+                  donut: true
       end
     end
-  end
 
-  content do
     para "Welcome to the Admin Dashboard!"
   end
+
 
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
@@ -23,6 +22,16 @@ ActiveAdmin.register_page "Dashboard" do
         span I18n.t("active_admin.dashboard_welcome.welcome")
         small I18n.t("active_admin.dashboard_welcome.call_to_action")
       end
+    end
+
+    show do 
+      attributes_table do
+         row :created_at
+         row :updated_at
+         row :category
+         row :user 
+      end
+       
     end
 
     # Here is an example of a simple dashboard with columns and panels.

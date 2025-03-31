@@ -3,16 +3,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable
-         
-         def timeout_in
-          60.minutes  # User will be logged out after 30 minutes of inactivity
-        end
-         
-        def admin?
-          role == "admin"
-        end
 
-         has_many :seller_users
-         has_many :sellers, through: :seller_users
+         has_many :products
+         has_many :businesses
+         has_many :orders
+
+  def timeout_in
+    1.hours # User will be logged out after 30 minutes of inactivity
+  end
+
+  def admin?
+    role == "admin"
+  end
 
 end
