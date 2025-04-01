@@ -1,15 +1,80 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* Custom Dashboard Container Styles */
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Panel Styles */
+  .dashboard-container .panel {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 48%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .dashboard-container .panel h3 {
+    font-size: 1.5em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling the Paragraph Text */
+  .dashboard-container .panel para {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  .dashboard-container .panel .percentage {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  /* Color-Coding the Percentage Circles */
+  .dashboard-container .panel .percentage.admins {
+    background-color: #e74c3c; /* Red for Admins */
+  }
+  
+  .dashboard-container .panel .percentage.sellers {
+    background-color: #f39c12; /* Orange for Sellers */
+  }
+  
+  .dashboard-container .panel .percentage.regular-users {
+    background-color: #3498db; /* Blue for Regular Users */
+  }
+  
+  .dashboard-container .panel .total {
+    font-size: 1.3em;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  /* Making the layout responsive */
+  @media screen and (max-width: 768px) {
+    .dashboard-container .panel {
+      width: 100%;
+    }
+  }
+  

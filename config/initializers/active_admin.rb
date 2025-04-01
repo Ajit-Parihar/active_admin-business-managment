@@ -3,7 +3,11 @@
 ActiveAdmin.setup do |config|
   require "devise"
   config.authentication_method = :authenticate_admin!
-  
+
+
+  # config.view_factory.layout = 'active_admin'
+
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -179,7 +183,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
+  config.filter_attributes = [ :encrypted_password, :password, :password_confirmation ]
 
   # == Localize Date/Time Format
   #
@@ -230,8 +234,9 @@ ActiveAdmin.setup do |config|
   # and feel.
   #
   # To load a stylesheet:
-  #   config.register_stylesheet 'my_stylesheet.css'
-  #
+  
+  config.register_stylesheet 'application.css'
+
   # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #

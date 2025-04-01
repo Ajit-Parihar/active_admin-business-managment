@@ -60,5 +60,3 @@ gem 'activeadmin'
 gem 'devise'
 gem 'sassc-rails'
 
-
-gem "chartkick", "~> 5.1"

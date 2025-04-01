@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :business
-  belongs_to :user
-  has_many :orders
+  belongs_to :user, optional: true
 
-  has_many_attached :photos
+  has_many :orders
+  has_one_attached :image
 end
