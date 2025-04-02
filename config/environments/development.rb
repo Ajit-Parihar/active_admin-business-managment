@@ -9,7 +9,7 @@ Rails.application.configure do
   config.enable_reloading = true
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  config.eager_load = true
 
   # Show full error reports.
   config.consider_all_requests_local = true
@@ -66,6 +66,10 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
+
+  config.assets.debug = true
+  config.assets.check_precompiled_asset = false
+
 
   # Annotate rendered view with file names.
   config.action_view.annotate_rendered_view_with_filenames = true

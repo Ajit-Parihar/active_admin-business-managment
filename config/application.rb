@@ -27,10 +27,16 @@ module BusinessManagement
       Book: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg"
     }
 
+
+    config.assets.precompile += [ "application.css", "css/style", "/assets/donut_chart.js" ]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
+    #
+    config.autoload_paths += Dir[Rails.root.join("assets",  "**/")]
+    config.autoload_paths += Dir[Rails.root.join("javascripts",  "**/")]
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")

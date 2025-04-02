@@ -8,7 +8,7 @@ ActiveAdmin.register Product do
       f.input :name
       f.input :price
       f.input :brand_name
-      f.input :image, as: :file  
+      f.input :image, as: :file
       f.input :business_id, as: :radio, collection: Business.pluck(:category, :id), label: "Product Category"
         end
     f.actions
@@ -22,28 +22,46 @@ ActiveAdmin.register Product do
       column :price
       column :image do |product|
         if product.image.attached?
-          link_to image_tag product.image, alt: product.name, style: 'max-width: 300px;'
+          link_to image_tag(product.image, alt: product.name, style: 'max-width: 300px;'), admin_product_path(product)
         else
           "No image available"
         end
       end
    end
-     def show_category_product
-         render plain: "okey"
-     end
+    #  def show_category_product
+    #      render plain: "okey"
+    #  end
 
-show do   
-  attributes_table do
-    row :name
-    row :price
-    row :brand_name
-    row :image do |product|
-      if product.image.attached?
-        image_tag product.image, alt: product.name, style: 'max-width: 300px;' 
-         else
-        "No image available"
+show do 
+     attributes_table do 
+      row :image do |product|
+              if product.image.attached?
+                image_tag product.image, alt: product.name, style: 'max-width: 300px;' 
+                 else
+                "No image available"
+              end
+            end
+       row :price
+       row :name     
+       row :brand_name
+         end
+      orders = Order.where(product_id: product.id) 
+      sellers = SellerProduct.where(product_id: product.id)
+
+   puts orders.inspect
+    
+            panel "buyers" do
+               table_for orders do
+                  column "User" do |order|
+               order.user.email
+            end
+            column "Ordered At" do |order|
+              order.created_at.strftime("%B %d, %Y %H:%M")
+            end
+            column "Seller" do |order|
+              order.seller.email
+           end
+          end 
       end
-    end
-  end
- end
+   end
 end
